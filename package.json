@@ -1,0 +1,25 @@
+{
+  "name": "python-ua-device",
+  "version": "1.0.0",
+  "description": "User Agent parser, More accurate",
+  "author": {
+    "name": "kaivean",
+    "email": "kaivean@outlook.com"
+  },
+  "keywords": [
+    "ua", "user-agent", "User Agent", "parser", "device", "os", "browser", "engine", "data analysis", "china", "中国", "国内"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kaivean/python-ua-device",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaivean/python-ua-device.git"
+  },
+  "scripts": {
+
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {}
+}
