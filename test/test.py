@@ -83,6 +83,6 @@ if __name__ == '__main__':
 
 
     for key in stat.keys():
-        print >> sys.stderr, "%s: 成功数:%s， 成功率: %s \%%" % (key, str(total - stat[key][0]), str(total - float(stat[key][0])/total*100))
+        print >> sys.stderr, "%s: 成功数:%s， 成功率: %s%%" % (key, str(total - stat[key][0]), str(float(total - stat[key][0])/total*100))
 
-    print >> sys.stderr, 'Total time', i, time.time() * 1000  - start, 'ms'
+    print >> sys.stderr, 'Total ua number: ', total,  ' Total time', i, time.time() * 1000  - start, 'ms'
