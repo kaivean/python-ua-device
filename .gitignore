@@ -13,3 +13,4 @@ python/*.txt
 *.pyc
 test1
 dist
+uaDevice.egg-info

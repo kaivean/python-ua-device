@@ -3,9 +3,10 @@
 
 #############################################
 # File Name: setup.py
-# Author: mage
-# Mail: mage@woodcol.com
-# Created Time:  2018-1-23 19:17:34
+# Author: kaivean
+# Mail: kaivean@outlook.com
+# usage test: rm -fr dist && python setup.py sdist  && twine upload --repository-url https://test.pypi.org/legacy/ dist/uaDevice-*.tar.gz
+# usage: rm -fr dist && python setup.py sdist  && twine upload dist/uaDevice-*.tar.gz
 #############################################
 
 
@@ -23,7 +24,7 @@ setup(
     author = "kaivean",
     author_email = "kaivean@outlook.com",
 
-    packages = find_packages('src', exclude=['*.test', '*.test.*', 'test.*', 'test', 'test.py']),
+    packages = find_packages(exclude=['*.test', '*.test.*', 'test.*', 'test', 'test.py']),
     include_package_data = True,
     platforms = "any",
     install_requires = []

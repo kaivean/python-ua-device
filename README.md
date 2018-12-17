@@ -28,13 +28,14 @@
 ## 安装
 
 ```bash
-pip install uaDevice
+pip install -U uaDevice
 ```
 
 ## 使用
 
 ```python
 import uaDevice
+ua='Mozilla/5.0 (iPhone; CPU iPhone OS 12_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 MQQBrowser/8.9.1 Mobile/15E148 Safari/604.1 MttCustomUA/2 QBWebViewType/1 WKType/1'
 info = uaDevice.parseUA(ua)
 output = '\t'.join([
     info['os']['name'],

@@ -1,0 +1,1 @@
+from uaDevice import parseUA
