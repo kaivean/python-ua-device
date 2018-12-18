@@ -9,15 +9,16 @@
 # usage: rm -fr dist && python setup.py sdist  && twine upload dist/uaDevice-*.tar.gz
 #############################################
 
-
+import os
 from setuptools import setup, find_packages
+ROOT = os.path.dirname(os.path.realpath(__file__))
 
 setup(
     name = "uaDevice",
-    version = "1.0.0",
+    version = "1.0.1",
     keywords = ("ua", "user-agent", "User Agent", "parser", "device", "os", "browser", "engine", "data analysis", "china", "中国", "国内"),
     description = "User Agent parser, More accurate",
-    long_description = "User Agent parser, More accurate",
+    long_description = open(os.path.join(ROOT, 'README.md')).read(),
     license = "MIT Licence",
 
     url = "https://github.com/kaivean/python-ua-device",

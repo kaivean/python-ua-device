@@ -254,7 +254,8 @@ class UA(object):
             self.os['version'] = Version({
                 'value': '1.0'
             })
-            match = optimizedSearch(r'OS (.*) like Mac OS X', ua)
+            # fix: 懒匹配，不然会包含like等
+            match = optimizedSearch(r'OS (.*?) like Mac OS X', ua)
             if match:
                 self.os['version'] = Version({
                     'value': match.group(1).replace('_', '.')
@@ -803,8 +804,8 @@ class UA(object):
 
         # S60
         #
-
-        if 'Symbian' in ua or optimizedSearch(r'Series[ ]?60', ua) or 'S60' in ua:
+        # fix S60可能是联想手机: Lenovo S60-t/V2.0 Linux/3.4.5 Android/4.4 Release/10.08.2014 Browser/AppleWebKit537.36 Chrome/30.0.0.0 Mobile Safari/537.36; 124
+        if 'Symbian' in ua or optimizedSearch(r'Series[ ]?60', ua) or ('S60' in ua and 'Android' not in ua):
             self.os['name'] = 'Series60'
 
             if optimizedSearch(r'SymbianOS/9.1', ua) and not optimizedSearch(r'Series60', ua):
