@@ -4,8 +4,12 @@ import re
 import os
 import time
 import json
+from imp import reload
+
 reload(sys)
-sys.setdefaultencoding('utf8')
+if sys.version_info < (3, 0):
+    sys.setdefaultencoding('utf-8')
+
 sys.path.append('uaDevice')
 import uaDevice
 
@@ -27,6 +31,7 @@ if __name__ == '__main__':
         'deviceModel': [0, [], []],
         'deviceManufacturer': [0, [], []]
     }
+
     total = len(uas)
     start = time.time() * 1000
     for i in range(total):
@@ -98,9 +103,6 @@ if __name__ == '__main__':
 
 
     for key in stat.keys():
-        print >> sys.stderr, "%s: 成功数:%s， 成功率: %s%%" % (key, str(total - stat[key][0]), str(float(total - stat[key][0])/total*100))
+        sys.stderr.write("%s: 成功数:%s， 成功率: %s%% \n" % (key, str(total - stat[key][0]), str(float(total - stat[key][0])/total*100)))
 
-    # for key in stat.keys():
-    #     print >> sys.stderr, key, json.dumps(list(set(stat[key][2])))
-
-    print >> sys.stderr, 'Total ua number: ', total,  ' Total time', i, time.time() * 1000  - start, 'ms'
+    sys.stderr.write("Total ua number: %s ,Total time %s %sms \n" % (str(total), str(i), str(time.time() * 1000  - start)))

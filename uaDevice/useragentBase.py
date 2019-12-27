@@ -3,8 +3,10 @@ import sys
 import re
 import os
 import json
+from imp import reload
 reload(sys)
-sys.setdefaultencoding('utf8')
+if sys.version_info < (3, 0):
+    sys.setdefaultencoding('utf-8')
 sys.path.append('./')
 
 from regs import *
@@ -1447,7 +1449,7 @@ class UA(object):
 
         # TechniSat
         #
-        match = optimizedSearch(r'\TechniSat ([^;]+);', ua)
+        match = optimizedSearch(r'TechniSat ([^;]+);', ua)
         if match:
             self.os['name'] = ''
             self.device['manufacturer'] = 'TechniSat'
@@ -1459,7 +1461,7 @@ class UA(object):
 
         # Technicolor
         #
-        match = optimizedSearch(r'\Technicolor_([^;]+);', ua)
+        match = optimizedSearch(r'Technicolor_([^;]+);', ua)
         if match:
             self.os['name'] = ''
             self.device['manufacturer'] = 'Technicolor'

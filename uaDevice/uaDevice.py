@@ -3,8 +3,10 @@ import sys
 import re
 import os
 import json
+from imp import reload
 reload(sys)
-sys.setdefaultencoding('utf8')
+if sys.version_info < (3, 0):
+    sys.setdefaultencoding('utf-8')
 sys.path.append('./')
 from useragentBase import *
 

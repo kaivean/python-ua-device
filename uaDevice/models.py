@@ -3,8 +3,15 @@ import sys
 import re
 import os
 import json
-reload(sys)
-sys.setdefaultencoding('utf8')
+
+if sys.version_info < (3, 0):
+    from imp import reload
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+else:
+    import importlib
+    importlib.reload(sys)
+
 sys.path.append('./')
 
 STRINGS_SAMSUNG = 'Samsung'
