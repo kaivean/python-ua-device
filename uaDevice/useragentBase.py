@@ -38,6 +38,8 @@ class Version(object):
         self.details = v['details'] if 'details' in v else None
         self.minor = -1
         self.type = ''
+    def __str__(self):
+        return self.original
 
 
 class UA(object):
@@ -497,11 +499,13 @@ class UA(object):
 
             # fix: 原js里，可能是个bug，version不是数字，是对象
             if self.os['version']:
-                ver = self.os['version'].original or '0'
+                ver = '0'
+                if self.os['version'].original and self.os['version'].original != '.':
+                    ver = self.os['version'].original
                 ver = float('.'.join(ver.split('.')[:2])) # 取两位
-                if self.os['version'].original >= 3:
+                if ver >= 3:
                     self.device['type'] = 'tablet'
-                if self.os['version'].original >= 4 and 'Mobile' in ua:
+                if ver >= 4 and 'Mobile' in ua:
                     self.device['type'] = 'mobile'
 
                 # 比原js多的逻辑
