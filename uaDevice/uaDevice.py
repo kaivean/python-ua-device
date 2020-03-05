@@ -37,7 +37,6 @@ def parseUA(ua):
     # tmpMatch = ''
     # handle mobile device
     if uaData['device']['type'] == 'mobile' or uaData['device']['type'] == 'tablet':
-
         # get manufacturer through the key words
         match = optimizedSearch(r'(ZTE|Samsung|Motorola|HTC|Coolpad|Huawei|Lenovo|LG|Sony Ericsson|Oppo|TCL|Vivo|Sony|Meizu|Nokia)', ua, re.I)
         if match:
@@ -116,14 +115,16 @@ def parseUA(ua):
             if match:
                 uaData['device']['model'] = match.group(1)
 
+        elif getMatch(ua, r'(Build/HONOR|HW-CHM)', True):
+            uaData['device']['manufacturer'] = 'Huawei'
+            uaData['device']['model'] = 'Honor'
 
         # handle Xiaomi
         # 兼容build结尾或直接)结尾 以及特殊的HM处理方案(build/hm2013011)
         # xiaomi手机类型: mi m1 m2 m3 hm 开头
         # hongmi有特殊判断build/hm2015011
-        elif getMatch(ua, r';\s(mi|m1|m2|m3|m4|hm)(\s*\w*)[\s\)]', True):
+        elif getMatch(ua, r';\s(mi|m[1-9]|hm)(\s+\w*)[\s\)]', True):
             match = getMatch()
-
             tmpMatch = optimizedSearch(r'(meitu|MediaPad)', ua, re.I)
             if tmpMatch:
                 # 美图手机名字冒充小米 比如 meitu m4 mizhi
@@ -177,7 +178,9 @@ def parseUA(ua):
                     match = getMatch()
                     uaData['device']['model'] = match.group(1)
 
-
+        elif getMatch(ua, r'(MIX)', True):
+            uaData['device']['manufacturer'] = 'Xiaomi'
+            uaData['device']['model'] = 'MIX'
 
         elif getMatch(ua, r'build\/HM\d{0,7}\)', True):
             match = getMatch()
@@ -292,6 +295,9 @@ def parseUA(ua):
                 match = getMatch()
                 uaData['device']['model'] = match.group(1)
 
+        elif getMatch(ua, r'(Build/OPM|Build/O11019)', True):
+            uaData['device']['manufacturer'] = 'Oppo'
+            uaData['device']['model'] = 'A'
 
         elif uaData['device']['manufacturer'] and uaData['device']['manufacturer'].lower() == 'oppo' and uaData['device']['model']:
             # 针对base库的数据做数据格式化处理

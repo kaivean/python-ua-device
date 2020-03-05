@@ -19,7 +19,7 @@
 * 内核： 99.92%
 * 设备类型： 100%
 * 设备型号：98.9%
-* 厂商信息：87.2%
+* 厂商信息：95.5%
 
 ## javascript版本
 [ua-device](https://github.com/fex-team/ua-device)
