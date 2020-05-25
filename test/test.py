@@ -14,7 +14,7 @@ sys.path.append('uaDevice')
 import uaDevice
 
 if __name__ == '__main__':
-    f = open('test/data10000.txt')
+    f = open('test/data.txt')
     # f = open('test1/data10000.2.txt')
     data = f.read()
 
