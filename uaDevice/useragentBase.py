@@ -2822,21 +2822,21 @@ class UA(object):
             })
 
             if self.browser['name'] is 'Internet Explorer':
-                if parseVersion(self.engine['version']) is 6 and float(self.browser['version']) < 10:
+                if parseVersion(self.engine['version']) is 6 and float(str(self.browser['version'])) < 10:
                     self.browser['version'] = Version({
                         'value': '10.0'
                     })
                     self.browser['mode'] = 'compat'
 
 
-                if parseVersion(self.engine['version']) is 5 and float(self.browser['version']) < 9:
+                if parseVersion(self.engine['version']) is 5 and float(str(self.browser['version'])) < 9:
                     self.browser['version'] = Version({
                         'value': '9.0'
                     })
                     self.browser['mode'] = 'compat'
 
 
-                if parseVersion(self.engine['version']) is 4 and float(self.browser['version']) < 8:
+                if parseVersion(self.engine['version']) is 4 and float(str(self.browser['version'])) < 8:
                     self.browser['version'] = Version({
                         'value': '8.0'
                     })
