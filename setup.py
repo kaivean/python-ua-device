@@ -15,7 +15,7 @@ ROOT = os.path.dirname(os.path.realpath(__file__))
 
 setup(
     name = "uaDevice",
-    version = "1.0.4",
+    version = "1.0.5",
     keywords = ("ua", "user-agent", "User Agent", "parser", "device", "os", "browser", "engine", "data analysis", "china", "中国", "国内"),
     description = "User Agent parser, More accurate",
     long_description = open(os.path.join(ROOT, 'README.md')).read(),

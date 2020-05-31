@@ -901,6 +901,13 @@ def parseUA(ua):
             'original': match.group(1)
         }
 
+    # 修正部分厂商
+    # Dalvik/2.1.0 (Linux; U; Android 8.1.0; M1813 Build/O11019)
+    if getMatch(ua, r'(M1813)', True):
+        uaData['device']['manufacturer'] = 'Meizu'
+        uaData['device']['model'] = ''
+
+
     # Safari
     if not uaData['browser']['name']:
         if getMatch(ua, r'Safari\/([\w.]+)', True) and optimizedSearch(r'Version', ua, re.I):

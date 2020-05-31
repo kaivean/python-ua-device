@@ -15,7 +15,7 @@ import uaDevice
 
 if __name__ == '__main__':
     f = open('test/data.txt')
-    # f = open('test1/data10000.2.txt')
+    # f = open('test/data10000.txt')
     data = f.read()
 
     uas = data.split('\n')
@@ -36,7 +36,6 @@ if __name__ == '__main__':
     start = time.time() * 1000
     for i in range(total):
         ua = uas[i]
-
         # if i + 1 != 1955:
         #     continue
         # print 'ua: ', ua, len(ua)

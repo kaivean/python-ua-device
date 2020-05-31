@@ -249,11 +249,9 @@ class UA(object):
 
 
 
-
-
         # iOS
         #
-        if optimizedSearch(r'iPhone( Simulator)?;', ua) or 'iPad;' in ua or 'iPod;' in ua or optimizedSearch(r'iPhone\s*\d*s?[cp]?;', ua, re.I):
+        if optimizedSearch(r'iPhone( Simulator)?;?', ua) or 'iPad;' in ua or 'iPod;' in ua or optimizedSearch(r'iPhone\s*\d*s?[cp]?;', ua, re.I):
             self.os['name'] = 'iOS'
             self.os['version'] = Version({
                 'value': '1.0'
@@ -272,7 +270,7 @@ class UA(object):
                 self.device['type'] = 'media'
                 self.device['manufacturer'] = 'Apple'
                 self.device['model'] = 'iPod Touch'
-            elif 'iPhone;' in ua or optimizedSearch(r'iPhone\s*\d*s?[cp]?;', ua, re.I):
+            elif 'iPhone;' in ua or optimizedSearch(r'iPhone\s*\d*s?[cp]?;?', ua, re.I):
                 self.device['type'] = 'mobile'
                 self.device['manufacturer'] = 'Apple'
                 self.device['model'] = 'iPhone'
@@ -2283,8 +2281,15 @@ class UA(object):
                     builds: False
                 })
 
-
-
+        # CFNetwork ios网络库
+        if 'CFNetwork' in ua:
+            self.browser['name'] = 'CFNetwork'
+            match = optimizedSearch(r'CFNetwork\/([0-9.]*)', ua)
+            if match:
+                self.browser['version'] = Version({
+                    'value': match.group(1),
+                    'details': 3
+                })
 
         # Nokia Browser
         #
