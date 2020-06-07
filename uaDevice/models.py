@@ -1634,6 +1634,7 @@ ANDROID_MODELS = {
     'OPPOR805': ['Oppo', 'Real R805'],
     'R807': ['Oppo', 'Real R807'],
     'OPPOT703': ['Oppo', 'T703'],
+    'PCLM10': ['Oppo', 'Reno Ace'],
     'P-01D': ['Panasonic', 'P-01D'],
     'P-02D': ['Panasonic', 'Lumix Phone'],
     'P-04D': ['Panasonic', 'Eluga'],
