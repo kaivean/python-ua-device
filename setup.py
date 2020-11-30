@@ -18,7 +18,7 @@ setup(
     version = "1.0.6",
     keywords = ("ua", "user-agent", "User Agent", "parser", "device", "os", "browser", "engine", "data analysis", "china", "中国", "国内"),
     description = "User Agent parser, More accurate",
-    long_description = open(os.path.join(ROOT, 'README.md')).read(),
+    long_description = open(os.path.join(ROOT, 'README.md'), encoding='UTF-8').read(),
     long_description_content_type="text/markdown",
     license = "MIT Licence",
 
