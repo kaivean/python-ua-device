@@ -5,20 +5,30 @@
 # File Name: setup.py
 # Author: kaivean
 # Mail: kaivean@outlook.com
-# usage test: rm -fr dist && python setup.py sdist  && twine upload --repository-url https://test.pypi.org/legacy/ dist/uaDevice-*.tar.gz
-# usage: rm -fr dist && python setup.py sdist  && twine upload dist/uaDevice-*.tar.gz
+# usage test: rm -fr dist && python3 setup.py sdist  && twine upload --repository-url https://test.pypi.org/legacy/ dist/uaDevice-*.tar.gz
+# usage: rm -fr dist && python3 setup.py sdist  && twine upload dist/uaDevice-*.tar.gz
 #############################################
 
 import os
 from setuptools import setup, find_packages
 ROOT = os.path.dirname(os.path.realpath(__file__))
 
+import sys
+import re
+import os
+import json
+
+if sys.version_info < (3, 0):
+    desc = open(os.path.join(ROOT, 'README.md')).read()
+else:
+    desc = open(os.path.join(ROOT, 'README.md'), encoding='UTF-8').read()
+
 setup(
     name = "uaDevice",
-    version = "1.0.6",
+    version = "1.0.8",
     keywords = ("ua", "user-agent", "User Agent", "parser", "device", "os", "browser", "engine", "data analysis", "china", "中国", "国内"),
     description = "User Agent parser, More accurate",
-    long_description = open(os.path.join(ROOT, 'README.md'), encoding='UTF-8').read(),
+    long_description = desc,
     long_description_content_type="text/markdown",
     license = "MIT Licence",
 
