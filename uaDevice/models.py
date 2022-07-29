@@ -988,6 +988,7 @@ ANDROID_MODELS = {
     'HUAWEI MediaPad': ['Huawei', 'MediaPad', 'tablet'],
     'Huawei S7-312u': ['Huawei', 'MediaPad', 'tablet'],
     'MediaPad 10 FHD': ['Huawei', 'MediaPad', 'tablet'],
+    'Hebe-BD00': ['Huawei', 'Huawei'],
     'Huawei C8500': ['Huawei', 'C8500'],
     'Huawei C8500S': ['Huawei', 'C8500'],
     'Huawei C8600': ['Huawei', 'C8600'],
@@ -1416,6 +1417,7 @@ ANDROID_MODELS = {
     'MB525': ['Motorola', 'DEFY'],
     'MB525+': ['Motorola', 'DEFY'],
     'MB525 for me': ['Motorola', 'DEFY'],
+    'Moto G': ['Motorola', 'Motorola'],
     'MB526': ['Motorola', 'DEFY+'],
     'MB611': ['Motorola', 'CLIQ 2'],
     'MB612': ['Motorola', 'XPRT'],
@@ -2309,6 +2311,10 @@ ANDROID_MODELS = {
     'MI 2': ['Xiaomi', 'MI-TWO'],
     'MI 2S': ['Xiaomi', 'MI-TWO Plus'],
     'MI 2SC': ['Xiaomi', 'MI-TWO Plus'],
+    'MI 2C': ['Xiaomi', 'MI-TWO'],
+    'MI 2A': ['Xiaomi', 'MI-TWO A'],
+    'MI 2C': ['Xiaomi', 'MI-TWO'],
+    '21091116C': ['Xiaomi', 'Redmi'],
     'Q07CL01': ['XVision', 'Q07', 'tablet'],
     'N6': ['Yarvik', '210 Tablet', 'tablet'],
     'EMR1879': ['Yidong', 'EMR1879', 'tablet'],
@@ -2458,7 +2464,7 @@ ANDROID_MODELS = {
     'Lenovo A690': ['Lenovo', 'A690'],
     'GT-I8262D': ['Samsung', 'LePhone I8262D'],
     'Lenovo A278t': ['Lenovo', 'A278t'],
-    'MI 2C': ['Xiaomi', 'MI-TWO'],
+
     'Coolpad 8070': ['Coolpad', '8070'],
     'R813T': ['Oppo', 'R813T'],
     'ZTE U930': ['ZTE', 'U930'],
@@ -2473,7 +2479,7 @@ ANDROID_MODELS = {
     'GT-S6352': ['Samsung', 'GT-S6352'],
     'GT-S7568': ['Samsung', 'GT-S7568'],
     'K-Touch T619+': ['K-Touch', 'T619'],
-    'MI 2A': ['Xiaomi', 'MI-TWO A'],
+
     'GT-N7108': ['Samsung', 'Galaxy Note II'],
     'K-Touch T621': ['K-Touch', 'T621'],
     'LENOVO-Lenovo-A298t': ['Lenovo', 'A298'],
@@ -2485,7 +2491,7 @@ ANDROID_MODELS = {
     'HS-E830': ['Hisense', 'E830'],
     'HS-E920': ['Hisense', 'E920'],
     'Lenovo S720': ['Lenovo', 'S720'],
-    'MI 2C': ['Xiaomi', 'MI-TWO'],
+
     'OPPO R813T': ['Oppo', 'R813'],
     'SCH-I879': ['Samsung', 'Galaxy Note'],
     'GT-S6102E': ['Samsung', 'Galaxy Y Duos']

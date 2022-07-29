@@ -123,6 +123,8 @@ def parseUA(ua):
         # 兼容build结尾或直接)结尾 以及特殊的HM处理方案(build/hm2013011)
         # xiaomi手机类型: mi m1 m2 m3 hm 开头
         # hongmi有特殊判断build/hm2015011
+
+        # eg: Mozilla/5.0 (Linux; Android 11; M2004J19C Build/RP1A.200720.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/13.12 SP-engine/2.52.0 baiduboxapp/13.14.0.11 (Baidu; P1 11) NABar/1.0
         elif getMatch(ua, r';\s(mi|m[1-9]|hm)(\s+\w*)[\s\)]', True):
             match = getMatch()
             tmpMatch = optimizedSearch(r'(meitu|MediaPad)', ua, re.I)
@@ -186,6 +188,11 @@ def parseUA(ua):
             match = getMatch()
             uaData['device']['manufacturer'] = 'Xiaomi'
             uaData['device']['model'] = 'HM'
+
+        elif getMatch(ua, r'\sM\w{7,9}\s', True):
+            match = getMatch()
+            uaData['device']['manufacturer'] = 'Xiaomi'
+            uaData['device']['model'] = 'Xiaomi'
 
         elif getMatch(ua, r'redmi\s?(\d+)?', True):
             match = getMatch()
@@ -271,6 +278,16 @@ def parseUA(ua):
             if getMatch(uaData['device']['model'], r'([a-z]+[0-9]+)i?[a-z]?[\s\-_]?', True):
                 match = getMatch()
                 uaData['device']['model'] = match.group(1)
+        # handle vivo
+        # eg: Mozilla/5.0 (Linux; Android 10; V2065A Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/13.7 matrixstyle/1 SP-engine/2.43.0 bdapp/1.0 (tomas; tomas) tomas/1.34.0.14 (Baidu; P1 10) NABar/1.0
+        elif getMatch(ua, r'(\sV([\w]{5,6})[\s\)])', True):
+            match = getMatch()
+            uaData['device']['manufacturer'] = 'Vivo'
+            uaData['device']['model'] = 'Vivo'
+        elif getMatch(ua, r'(X[\d]{2});', True):
+            match = getMatch()
+            uaData['device']['manufacturer'] = 'Vivo'
+            uaData['device']['model'] = match.group(1)
 
 
         # handle Oppo
@@ -294,6 +311,12 @@ def parseUA(ua):
             elif getMatch(uaData['device']['model'], r'(\w*-?[a-z]+[0-9]+)', True):
                 match = getMatch()
                 uaData['device']['model'] = match.group(1)
+        # handle oppo
+        # eg: Mozilla/5.0 (Linux; U; Android 11; zh-cn; PDVM00 Build/RKQ1.201217.002) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/90.0.4430.61 Mobile Safari/537.36 HeyTapBrowser/40.7.39.5
+        elif getMatch(ua, r'(\sP([\w]{5})\s)', True):
+            match = getMatch()
+            uaData['device']['manufacturer'] = 'Oppo'
+            uaData['device']['model'] = 'Oppo'
 
         elif getMatch(ua, r'(Build/OPM|Build/O11019)', True):
             uaData['device']['manufacturer'] = 'Oppo'
