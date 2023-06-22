@@ -9,7 +9,6 @@ if sys.version_info < (3, 0):
     sys.setdefaultencoding('utf-8')
 sys.path.append('./')
 
-from regs import *
 from models import *
 
 regObj = {
@@ -2734,36 +2733,7 @@ class UA(object):
             self.device['type'] = 'desktop'
 
 
-
-        # Others
-        #
-        # 移除browsers
-
-        for item in browsers:
-            # 大小写不敏感
-            if 'i' in item:
-                match = optimizedSearch(item['regexp'], ua, re.I)
-            else:
-                match = optimizedSearch(item['regexp'], ua)
-            if match:
-                self.browser['name'] = item['name']
-                self.browser['channel'] = ''
-                self.browser['stock'] = False
-
-                if len(match.groups()) > 0 and match.group(1):
-                    self.browser['version'] = Version({
-                        'value': match.group(1),
-                        'details': item['details'] if 'details' in item else None
-                    })
-                else:
-                    self.browser['version'] = None
-
-
-
-
-
         # WebKit
-        #
         match = optimizedSearch(r'WebKit\/([0-9.]*)', ua, re.I)
         if match:
             self.engine['name'] = 'Webkit'

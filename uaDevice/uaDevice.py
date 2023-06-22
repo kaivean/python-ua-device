@@ -644,14 +644,13 @@ def parseUA(ua):
 
         # 360 security Explorer
 
-        # if match = //i.exec(ua):
+        # user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.5359.95 Safari/537.36 QIHU 360SE/14.1.1094.0
         if getMatch(ua, r'360se(?:[ \/]([\w.]+))?', True):
             match = getMatch()
             uaData['browser']['name'] = '360 security Explorer'
             uaData['browser']['version'] = {
                 'original': match.group(1)
             }
-
 
         # the world
 
@@ -686,7 +685,6 @@ def parseUA(ua):
     elif uaData['device']['type'] == 'mobile' or uaData['device']['type'] == 'tablet':
 
         # BaiduHD
-
         if getMatch(ua, r'BaiduHD\s+([\w.]+)', True):
             match = getMatch()
             uaData['browser']['name'] = 'BaiduHD'
@@ -696,53 +694,15 @@ def parseUA(ua):
 
 
         # 360 Browser
-
         elif getMatch(ua, r'360.s*aphone\s*browser\s*\(version\s*([\w.]+)\)', True):
             match = getMatch()
-            uaData['browser']['name'] = '360 Browser'
+            uaData['browser']['name'] = '360 Mobile Browser'
             uaData['browser']['version'] = {
                 'original': match.group(1)
             }
-
-
-        # Baidu Browser
-
-        # elif match = /flyflow\/([\w.]+)/i.exec(ua):
-        elif getMatch(ua, r'flyflow\/([\w.]+)', True):
-            match = getMatch()
-            uaData['browser']['name'] = 'Baidu Browser'
-            uaData['browser']['version'] = {
-                'original': match.group(1)
-            }
-
-
-
-        # Baidu HD
-
-        # elif match = /baiduhd ([\w.]+)/i.exec(ua):
-        elif getMatch(ua, r'baiduhd ([\w.]+)', True):
-            match = getMatch()
-            uaData['browser']['name'] = 'Baidu HD'
-            uaData['browser']['version'] = {
-                'original': match.group(1)
-            }
-
-
-
-        # baidubrowser
-
-        # elif match = //i.exec(ua):
-        elif getMatch(ua, r'baidubrowser\/([\d\.]+)\s', True):
-            match = getMatch()
-            uaData['browser']['name'] = 'baidubrowser'
-            uaData['browser']['version'] = {
-                'original': match.group(1)
-            }
-
 
 
         # LieBaoFast
-
         # elif match = //i.exec(ua):
         elif getMatch(ua, r'LieBaoFast\/([\w.]+)', True):
             match = getMatch()
@@ -752,10 +712,7 @@ def parseUA(ua):
             }
 
 
-
         # LieBao
-
-        # elif match = //i.exec(ua):
         elif getMatch(ua, r'LieBao\/([\w.]+)', True):
             match = getMatch()
             uaData['browser']['name'] = 'LieBao'
@@ -764,10 +721,7 @@ def parseUA(ua):
             }
 
 
-
         # SOUGOU
-
-        # elif match = //i.exec(ua):
         elif getMatch(ua, r'Sogou\w+\/([0-9\.]+)', True):
             match = getMatch()
             uaData['browser']['name'] = 'SogouMobileBrowser'
@@ -775,11 +729,7 @@ def parseUA(ua):
                 'original': match.group(1)
             }
 
-
-
         # 百度国际
-
-        # elif match = //i.exec(ua):
         elif getMatch(ua, r'bdbrowser\w+\/([0-9\.]+)', True):
             match = getMatch()
             uaData['browser']['name'] = '百度国际'
@@ -787,10 +737,7 @@ def parseUA(ua):
                 'original': match.group(1)
             }
 
-
-
         # Android Chrome Browser
-
         elif uaData['os']['name'] == 'Android' and optimizedSearch(r'safari', ua, re.I) and getMatch(ua, r'chrome\/([0-9\.]+)', True):
             match = getMatch()
             tmpMatch = getMatch(ua, r'\s+(\w+Browser)\/?([\d\.]*)')
@@ -806,10 +753,7 @@ def parseUA(ua):
                 uaData['browser']['version'] = {'original': match.group(1)}
 
 
-
-
         # Android Google Browser
-
         elif uaData['os']['name'] == 'Android' and optimizedSearch(r'safari', ua, re.I) and getMatch(ua, r'version\/([0-9\.]+)', True):
             match = getMatch()
             tmpMatch = getMatch(ua, r'\s+(\w+Browser)\/?([\d\.]*)')
@@ -825,10 +769,7 @@ def parseUA(ua):
                 uaData['browser']['version'] = {'original': match.group(1)}
 
 
-
-
         # 'Mozilla/5.0 (iPad; CPU OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B206' belongs to Safari
-
         elif getMatch(ua, r'(ipad|iphone).* applewebkit\/.* mobile', True):
             match = getMatch()
             uaData['browser']['name'] = 'Safari'
@@ -836,41 +777,48 @@ def parseUA(ua):
 
     if getMatch(ua, r'baiduboxapp\/?([\d\.]*)', True):
         match = getMatch()
-        uaData['browser']['name'] = '百度框'
+        uaData['browser']['name'] = 'BaiduApp'
         if match.group(1):
             uaData['browser']['version'] = {
                 'original': match.group(1)
             }
-
-        # uaData['browser']['name'] = 'baidu box';
-
     elif getMatch(ua, r'BaiduLightAppRuntime', True):
         match = getMatch()
         uaData['browser']['name'] = '轻应用runtime'
-        # uaData['browser']['name'] = 'qing runtime';
-
+    elif getMatch(ua, r'baidubrowser\/([\d\.]+)\s', True):
+        match = getMatch()
+        uaData['browser']['name'] = 'BaiduBrowser'
+        uaData['browser']['version'] = {
+            'original': match.group(1)
+        }
+    elif getMatch(ua, r'SE 2.X MetaSr', True):
+        # match = getMatch()
+        uaData['browser']['name'] = 'SogouExplorer'
+        uaData['browser']['version'] = {
+            'original': ''
+        }
+    elif getMatch(ua, r'PhantomJS\/([0-9.]*)', True):
+        match = getMatch()
+        uaData['browser']['name'] = 'PhantomJS'
+        uaData['browser']['version'] = {
+            'original': match.group(1)
+        }
     elif getMatch(ua, r'Weibo', True):
         match = getMatch()
         uaData['browser']['name'] = '微博'
-        # uaData['browser']['name'] = 'weibo';
-
     elif getMatch(ua, r'MQQ', True):
         match = getMatch()
         uaData['browser']['name'] = '手机QQ'
-        # uaData['browser']['name'] = 'mobile qq';
-
     elif getMatch(ua, r'hao123', True):
         match = getMatch()
         uaData['browser']['name'] = 'hao123'
 
-    # }
+
     if getMatch(ua, r'MicroMessenger\/([\w.]+)', True):
         match = getMatch()
         uaData['browser']['name'] = '微信'
-        # optimizedSub(r'-+|_+|\s+', r' ', )
         tmpVersion = match.group(1).replace('_', '.')
         tmpMatch = getMatch(tmpVersion, r'(\d+\.\d+\.\d+\.\d+)')
-        # tmpMatch = //.exec(tmpVersion)
         if tmpMatch:
             tmpVersion = tmpMatch.group(1)
 
@@ -881,6 +829,15 @@ def parseUA(ua):
     elif getMatch(ua, r'UCBrowser\/([\w.]+)', True):
         match = getMatch()
         uaData['browser']['name'] = 'UC Browser'
+        uaData['browser']['version'] = {
+            'original': match.group(1)
+        }
+
+    # Lenovo
+    # Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 SLBrowser/8.0.1.5162 SLBChan/10
+    elif getMatch(ua, r'SLBrowser\/([\w.]+)', True):
+        match = getMatch()
+        uaData['browser']['name'] = 'Lenovo'
         uaData['browser']['version'] = {
             'original': match.group(1)
         }
@@ -908,11 +865,12 @@ def parseUA(ua):
         }
 
     # Microsoft Edge
-    elif getMatch(ua, r'Edge\/12', True) and getMatch(ua, r'Windows Phone|Windows NT', True):
+    # Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.62
+    elif getMatch(ua, r' (Edge|Edg)\/([\w.]+)', True):
+        match = getMatch()
         uaData['browser']['name'] = 'Microsoft Edge'
         uaData['browser']['version'] = {
-            'major': '12',
-            'original': '12'
+            'original': match.group(2)
         }
 
     # miui browser
