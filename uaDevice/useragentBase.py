@@ -109,7 +109,7 @@ class UA(object):
                 }
             },
             'device': {
-                'type': self.device['type'],
+                'type': self.device['type'] if self.device['identified'] else '',
                 'manufacturer': self.device['manufacturer'],
                 'model': self.device['model']
             }
