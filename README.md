@@ -1,4 +1,4 @@
-# ua-device [![Build Status](https://travis-ci.com/kaivean/python-ua-device.svg?branch=master)](https://travis-ci.com/kaivean/python-ua-device)
+# ua-device
 解析user-agent的python包，可以获取到系统、浏览器内核、浏览器、设备信息，其特点：
 
 * 相比国内外的流行的python包，该模块解析国内复杂的ua信息更加精确，有几千行代码专门来匹配具体的特定的ua
