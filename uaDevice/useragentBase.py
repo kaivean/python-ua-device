@@ -280,12 +280,8 @@ class UA(object):
 
 
             self.device['identified'] = True
-
-
-
         # MacOS X
         #
-
         elif 'Mac OS X' in ua:
             self.os['name'] = 'Mac OS X'
             match = optimizedSearch(r'Mac OS X (10[0-9\._]*)', ua)
@@ -294,12 +290,18 @@ class UA(object):
                     'value': match.group(1).replace('_', '.')
                 })
 
-
+        # Harmony OS
+        if 'ArkWeb' in ua:
+            self.os['name'] = 'Harmony'
+            match = optimizedSearch(r'OpenHarmony ([0-9\._]*)', ua)
+            if match:
+                self.os['version'] = Version({
+                    'value': match.group(1).replace('_', '.')
+                })
 
 
         # Windows
         #
-
         if 'Windows' in ua:
             self.os['name'] = 'Windows'
             match = optimizedSearch(r'Windows NT ([0-9]\.[0-9])', ua)
@@ -468,9 +470,6 @@ class UA(object):
                     self.device['model'] = None
                     self.device['type'] = 'emulator'
                     self.device['identified'] = True
-
-
-
 
 
         # Android
