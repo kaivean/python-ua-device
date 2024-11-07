@@ -72,7 +72,7 @@ class UA(object):
             'version': Version()
         }
         self.device = {
-            'type': 'desktop',
+            'type': '',
             'identified': False,
             'manufacturer': '',
             'model': '',
@@ -109,7 +109,7 @@ class UA(object):
                 }
             },
             'device': {
-                'type': self.device['type'] if self.device['identified'] else '',
+                'type': self.device['type'],
                 'manufacturer': self.device['manufacturer'],
                 'model': self.device['model']
             }
@@ -699,7 +699,8 @@ class UA(object):
                 ver = '0'
                 if self.os['version']:
                     ver = self.os['version'].original
-                ver = float('.'.join(ver.split('.')[:2])) # 只要一个dot，否则float报错
+                if ver:
+                    ver = float('.'.join(ver.split('.')[:2])) # 只要一个dot，否则float报错
                 if ver >= 10:
                     self.os['name'] = 'BlackBerry'
 
@@ -2275,8 +2276,7 @@ class UA(object):
             if match:
                 self.browser['version'] = Version({
                     'value': match.group(1),
-                    'details': 3,
-                    builds: False
+                    'details': 3
                 })
 
         # CFNetwork ios网络库
