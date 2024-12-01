@@ -82,15 +82,22 @@ info = uaDevice.parseUA(ua)
 # 输出结果示例
 print(f"系统: {info['os']['name']} {info['os']['version']['original']}")  # Windows 10.0
 print(f"浏览器: {info['browser']['name']} {info['browser']['version']['original']}")  # Chrome 91.0.4472.124
-print(f"内核: {info['engine']['name']} {info['engine']['version']['original']}")  # Blink 537.36
+print(f"内核: {info['engine']['name']}")  # Blink
 print(f"设备类型: {info['device']['type']}")  # desktop
 print(f"设备型号: {info['device']['model']}")  # PC
 print(f"制造商: {info['device']['manufacturer']}")  # Unknown
 
-# 微信内置浏览器示例
-ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.7(0x18000731) NetType/WIFI Language/zh_CN'
+# 安卓移动端示例
+ua = 'Mozilla/5.0 (Linux; Android 13; SM-S918B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36'
 info = uaDevice.parseUA(ua)
-# 将识别出微信浏览器、iOS系统、iPhone设备等信息
+
+# 输出结果示例
+print(f"系统: {info['os']['name']} {info['os']['version']['original']}")  # Android 13
+print(f"浏览器: {info['browser']['name']} {info['browser']['version']['original']}")  # Chrome 114.0.0.0
+print(f"内核: {info['engine']['name']}")  # Blink
+print(f"设备类型: {info['device']['type']}")  # mobile
+print(f"设备型号: {info['device']['model']}")  # SM-S918B
+print(f"制造商: {info['device']['manufacturer']}")  # Samsung
 ```
 
 ## 贡献
