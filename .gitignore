@@ -16,3 +16,6 @@ data10000.txt
 not_sumbit_test
 dist
 uaDevice.egg-info
+test_old.py
+*.txt
+old

@@ -4,17 +4,21 @@ import re
 import os
 import time
 import json
-from imp import reload
+from importlib import reload
 
 reload(sys)
 if sys.version_info < (3, 0):
     sys.setdefaultencoding('utf-8')
 
 sys.path.append('uaDevice')
-import uaDevice
+import ua_parser
 
 if __name__ == '__main__':
-    f = open('test/data.txt')
+    # 获取命令行参数作为文件名，默认为 data.txt
+    filename = sys.argv[1] if len(sys.argv) > 1 else 'data.txt'
+    # 拼接完整路径
+    filepath = os.path.join('test', filename)
+    f = open(filepath)
     # f = open('test/data10000.txt')
     data = f.read()
 
@@ -41,7 +45,7 @@ if __name__ == '__main__':
         # print 'ua: ', ua, len(ua)
 
         s = time.time() * 1000
-        info = uaDevice.parseUA(ua)
+        info = ua_parser.parseUA(ua)
         output = '\t'.join([
             info['os']['name'],
             info['os']['version']['original'],
@@ -54,6 +58,9 @@ if __name__ == '__main__':
             info['device']['manufacturer']
         ])
         print(output)
+
+        if not info['device']['manufacturer']:
+            print(ua)
 
         stat['osName'][2].append(info['os']['name'])
         if not info['os']['name']:
