@@ -27,7 +27,7 @@ else:
 
 setup(
     name = "uaDevice",
-    version = "2.0.0",
+    version = "2.0.1",
     keywords = ("ua", "user-agent", "User Agent", "parser", "device", "os", "browser", "engine", "data analysis", "china", "中国", "国内"),
     description = "User Agent parser, More accurate",
     long_description = desc,
